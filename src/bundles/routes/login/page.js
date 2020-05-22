@@ -5,24 +5,18 @@ import {
     EuiFormRow,
     EuiFieldText,
     EuiFieldPassword,
-    EuiButton
+    EuiButton,
+    EuiTabbedContent,
+    EuiSpacer
 } from "@elastic/eui";
 import LoginContainer from "./container";
 import LoadingContext from "../../common/contexts/LoadingContext";
+import LoginForm from "./components/LoginForm";
+import {Fragment} from "react";
+import SignupForm from "./components/SignupForm";
 
 class LoginPage extends React.Component {
     static contextType = LoadingContext;
-
-    state = {
-        field_email: "",
-        field_pass: ""
-    };
-
-    onChange = (field_name, value) => {
-        this.setState({
-            [field_name]: value
-        });
-    };
 
     checkAccount = () => {
         let {field_email, field_pass} = this.state;
@@ -46,31 +40,32 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        let {field_email, field_pass} = this.state;
+        const tabs = [
+            {
+                id: 'login',
+                name: 'Log in',
+                content: (
+                    <Fragment>
+                        <EuiSpacer />
+                        <LoginForm/>
+                    </Fragment>
+                ),
+            },
+            {
+                id: 'signup',
+                name: 'Sign up',
+                content: (
+                    <Fragment>
+                        <EuiSpacer />
+                        <SignupForm/>
+                    </Fragment>
+                ),
+            },
+        ]
 
         return (
             <LoginContainer>
-                <EuiForm component="div">
-                    <EuiFormRow label="Email/Username" helpText="" fullWidth>
-                        <EuiFieldText name="userid" fullWidth
-                                      value={field_email}
-                                      onChange={e => this.onChange("field_email", e.target.value)}
-                        />
-                    </EuiFormRow>
-
-                    <EuiFormRow label="Password" helpText="">
-                        <EuiFieldPassword
-                            placeholder="Password here.."
-                            value={field_pass}
-                            onChange={e => this.onChange("field_pass", e.target.value)}
-                            aria-label="Use aria labels when no actual label is in use"
-                        />
-                    </EuiFormRow>
-
-                    <EuiButton onClick={this.onSubmit} fill grow={true}>
-                        Log in
-                    </EuiButton>
-                </EuiForm>
+                <EuiTabbedContent tabs={tabs}/>
             </LoginContainer>
         )
     }
