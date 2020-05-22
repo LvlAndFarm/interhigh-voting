@@ -42,5 +42,28 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCJY1cD3egiptelB27fX6WiZjqQv7LY5hs",
+        authDomain: "student-voting-a7143.firebaseapp.com",
+        databaseURL: "https://student-voting-a7143.firebaseio.com",
+        projectId: "student-voting-a7143",
+        storageBucket: "student-voting-a7143.appspot.com",
+        messagingSenderId: "407882667849",
+        appId: "1:407882667849:web:1ce2aded960d346700ec98",
+        measurementId: "G-NXN3HC1V1Q"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>

@@ -4,6 +4,9 @@
     * { font-family: 'Inter var', sans-serif; }
 }
 
+document, html, body {
+    overflow-x: hidden;
+}
 /** {*/
 /*    font-family: "Inter UI", sans-serif;*/
 /*    font-weight: 400;*/
